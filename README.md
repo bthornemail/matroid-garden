@@ -26,6 +26,41 @@ node runtime/browser-v1/dev-server.mjs
 # open http://localhost:4173/runtime/browser-v1/demo/index.html
 ```
 
+## Local Dev (automaton/ui) via Docker Compose
+
+This repo lives alongside `automaton/` and `matroid-garden/` under `/home/main/devops`.
+If you want to run the user-facing portal UI without fighting host permissions or binding to privileged ports, use Docker Compose here as a local dev gateway.
+
+What you get:
+
+- `automaton/ui` Vite dev server (containerized)
+- an nginx gateway on `http://localhost:8080` that:
+  - proxies `/` to the UI
+  - serves `matroid-garden/bundles/` at `/bundles/` (same-origin, so no CORS pain)
+  - serves `/.well-known/` from `automaton/ui/public/.well-known/` (for domain config)
+
+### Run
+
+```bash
+cd /home/main/devops/matroid-garden
+
+docker compose up --build
+```
+
+Open:
+
+- `http://localhost:8080/`
+
+Bundle loading examples:
+
+- `http://localhost:8080/?base=/bundles/fano-garden/`
+
+Stop:
+
+```bash
+docker compose down
+```
+
 ## Runtime Compatibility Matrix (Consumer View)
 
 This project currently maintains browser-v1 as the normative reference and a wire-compatible POSIX/Haskell runtime baseline.

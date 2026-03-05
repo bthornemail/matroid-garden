@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>World Seed Replay v1</title>
+  <style>
+    :root {
+      --bg: #0d1016;
+      --panel: #171c28;
+      --line: #2b3346;
+      --text: #eef4ff;
+      --muted: #9eaac0;
+      --accent: #86dfb3;
+    }
+    body {
+      margin: 0;
+      font-family: "IBM Plex Sans", "Segoe UI", sans-serif;
+      color: var(--text);
+      background: radial-gradient(1100px 700px at 20% -10%, #25344a 0%, var(--bg) 60%);
+    }
+    .wrap {
+      max-width: 1100px;
+      margin: 1rem auto 2rem auto;
+      padding: 0 1rem;
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: 2fr 1fr;
+    }
+    .panel {
+      background: linear-gradient(160deg, #182031 0%, var(--panel) 75%);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 1rem;
+    }
+    canvas {
+      width: 100%;
+      max-width: 760px;
+      aspect-ratio: 1 / 1;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #0b1018;
+    }
+    .row { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.75rem; }
+    input, button {
+      background: #0f1522;
+      color: var(--text);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 0.5rem 0.65rem;
+      font: inherit;
+    }
+    input[type="range"] { width: 180px; }
+    input[type="text"] { min-width: 280px; flex: 1; }
+    button.primary {
+      background: linear-gradient(180deg, #93f0bf, var(--accent));
+      color: #07130c;
+      border-color: #5ed08f;
+      font-weight: 600;
+    }
+    #log {
+      max-height: 360px;
+      overflow: auto;
+      white-space: pre-wrap;
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin: 0;
+    }
+    .meta { color: var(--muted); font-size: 0.9rem; }
+    @media (max-width: 900px) {
+      .wrap { grid-template-columns: 1fr; }
+      input[type="text"] { min-width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <section class="panel">
+      <h2>Canonical Replay</h2>
+      <div class="row">
+        <input id="manifestUrl" type="text" value="/v1/canon/canon-manifest.ndjson" aria-label="Manifest URL">
+        <button id="loadBtn" class="primary">Load</button>
+      </div>
+      <div class="row">
+        <button id="playBtn" class="primary">Play</button>
+        <button id="pauseBtn">Pause</button>
+        <button id="stopBtn">Stop</button>
+        <button id="recordBtn">Start Record</button>
+        <button id="stopRecordBtn">Stop Record</button>
+      </div>
+      <div class="row">
+        <label for="seek">Seek</label>
+        <input id="seek" type="range" min="0" max="100" value="0">
+        <label for="speed">Speed</label>
+        <input id="speed" type="range" min="50" max="200" value="100">
+        <span id="speedText">1.0x</span>
+      </div>
+      <canvas id="squareCanvas" width="760" height="760"></canvas>
+      <p class="meta" id="status">Idle.</p>
+    </section>
+
+    <section class="panel">
+      <h2>Log</h2>
+      <pre id="log"></pre>
+    </section>
+  </div>
+
+  <script src="/v1/replay/epistemic-square.js"></script>
+  <script src="/v1/replay/canon-player.js"></script>
+  <script>
+    const canvas = document.getElementById("squareCanvas");
+    const ctx = canvas.getContext("2d");
+    const statusEl = document.getElementById("status");
+    const logEl = document.getElementById("log");
+
+    function addLog(message, type = "info") {
+      logEl.textContent += `[${type}] ${message}\n`;
+      logEl.scrollTop = logEl.scrollHeight;
+    }
+    window.addLog = addLog;
+
+    const square = new EpistemicSquare({ autoRotate: false, spinSpeed: 0.8 });
+    const player = new CanonPlayer(square);
+    const recorder = new CanonRecorder(canvas);
+
+    function draw(state) {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      const cx = canvas.width / 2;
+      const cy = canvas.height / 2;
+      const size = Math.min(canvas.width, canvas.height) * 0.7;
+
+      ctx.strokeStyle = "#2b3346";
+      ctx.lineWidth = 2;
+      ctx.strokeRect(cx - size / 2, cy - size / 2, size, size);
+      ctx.beginPath();
+      ctx.moveTo(cx, cy - size / 2);
+      ctx.lineTo(cx, cy + size / 2);
+      ctx.moveTo(cx - size / 2, cy);
+      ctx.lineTo(cx + size / 2, cy);
+      ctx.stroke();
+
+      const colors = ["#ee5f5f", "#f6a042", "#ebe36d", "#8fd46f", "#63c7f4", "#9f86ff", "#ef8de7"];
+
+      state.points.forEach((p, idx) => {
+        const x = cx + p.x * size;
+        const y = cy - p.y * size;
+
+        ctx.fillStyle = colors[idx % colors.length];
+        ctx.beginPath();
+        ctx.arc(x, y, 11, 0, Math.PI * 2);
+        ctx.fill();
+
+        ctx.fillStyle = "#ffffff";
+        ctx.font = "12px IBM Plex Sans, sans-serif";
+        ctx.fillText(`${p.id}`, x - 3, y + 4);
+      });
+    }
+
+    function renderFromSquare() {
+      draw(square.getState());
+    }
+
+    player.onProgress = (pct, chunk, i, n) => {
+      document.getElementById("seek").value = String(Math.max(0, Math.min(100, pct || 0)));
+      const label = chunk ? `${chunk.event || "chunk"} ${i + 1}/${n}` : `${i}/${n}`;
+      statusEl.textContent = `Progress: ${Math.round(pct || 0)}% | ${label}`;
+      renderFromSquare();
+    };
+
+    player.onChunk = (chunk) => {
+      const line = chunk.text || chunk.title || chunk.event || "chunk";
+      addLog(line, chunk.event || "chunk");
+    };
+
+    player.onComplete = () => {
+      addLog("Replay complete.", "ok");
+      statusEl.textContent = "Replay complete.";
+    };
+
+    async function loadCanonFromInput() {
+      const url = document.getElementById("manifestUrl").value.trim();
+      statusEl.textContent = `Loading ${url} ...`;
+      try {
+        const count = await player.loadCanon(url);
+        player.stop();
+        renderFromSquare();
+        addLog(`Loaded ${count} chunks from ${url}`, "ok");
+        statusEl.textContent = `Loaded ${count} chunks.`;
+      } catch (err) {
+        addLog(`Load failed: ${err.message}`, "error");
+        statusEl.textContent = "Load failed.";
+      }
+    }
+
+    document.getElementById("loadBtn").addEventListener("click", loadCanonFromInput);
+    document.getElementById("playBtn").addEventListener("click", () => player.play());
+    document.getElementById("pauseBtn").addEventListener("click", () => player.pause());
+    document.getElementById("stopBtn").addEventListener("click", () => {
+      player.stop();
+      renderFromSquare();
+    });
+    document.getElementById("seek").addEventListener("input", (e) => {
+      player.seek(Number(e.target.value) / 100);
+      renderFromSquare();
+    });
+    document.getElementById("speed").addEventListener("input", (e) => {
+      const speed = Number(e.target.value) / 100;
+      player.setSpeed(speed);
+      document.getElementById("speedText").textContent = `${speed.toFixed(1)}x`;
+    });
+
+    document.getElementById("recordBtn").addEventListener("click", () => {
+      const ok = recorder.startRecording("webm");
+      if (ok) addLog("Recording started.", "recording");
+    });
+    document.getElementById("stopRecordBtn").addEventListener("click", () => {
+      recorder.stopRecording();
+      addLog("Recording stop requested.", "recording");
+    });
+
+    renderFromSquare();
+    loadCanonFromInput();
+  </script>
+</body>
+</html>

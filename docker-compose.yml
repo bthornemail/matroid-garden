@@ -1,0 +1,33 @@
+services:
+  ui:
+    image: node:24-bookworm
+    working_dir: /work/automaton-ui
+    environment:
+      - NODE_ENV=development
+    volumes:
+      - ../automaton/ui:/work/automaton-ui:rw
+      - ui_node_modules:/work/automaton-ui/node_modules
+      - ui_npm_cache:/root/.npm
+    command: >
+      bash -lc
+      "npm ci &&
+       npm run dev -- --host 0.0.0.0 --port 5173 --strictPort"
+    expose:
+      - "5173"
+
+  gateway:
+    image: nginx:1.27-alpine
+    depends_on:
+      - ui
+    ports:
+      - "8080:80"
+    volumes:
+      - ./dev/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      # Serve bundles and other static lane artifacts from matroid-garden.
+      - ../matroid-garden/bundles:/srv/bundles:ro
+      # Optional: per-domain runtime config in dev. If absent, nginx returns 404.
+      - ../automaton/ui/public/.well-known:/srv/well-known:ro
+
+volumes:
+  ui_node_modules:
+  ui_npm_cache:

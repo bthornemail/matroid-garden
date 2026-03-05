@@ -3,7 +3,7 @@
   "kind": "bundle.verify",
   "pass": true,
   "generated_at": "1970-01-01T00:00:00Z",
-  "bundle_dir": "/home/main/devops/light-garden/narrative-series/Artifacts",
+  "bundle_dir": "/home/main/devops/matroid-garden/narrative-series/Artifacts",
   "policy": {
     "require_waveform_render": false,
     "require_narrative": true,
