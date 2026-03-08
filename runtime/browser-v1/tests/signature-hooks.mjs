@@ -2,7 +2,7 @@ import { readFile } from "node:fs/promises";
 import { BrowserV1Runtime } from "../runtime.js";
 
 async function run() {
-  const svg = await readFile("dev-docs/artifacts/fano-garden.svg", "utf8");
+  const svg = await readFile("dev-docs/artifacts/matroid-garden.svg", "utf8");
 
   const rt = new BrowserV1Runtime({
     signing: {

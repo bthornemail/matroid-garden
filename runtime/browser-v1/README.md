@@ -28,7 +28,7 @@ Then open:
 (Or just `http://localhost:4173/` which routes to the demo.)
 
 The demo:
-1. loads `dev-docs/artifacts/fano-garden.svg`
+1. loads `dev-docs/artifacts/matroid-garden.svg`
 2. initializes runtime with ethers HD derivation
 3. opens canonical Fano edges
 4. signs and verifies one commit with ethers

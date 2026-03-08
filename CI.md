@@ -50,7 +50,7 @@ CLI setup example (`gh` + `jq`):
 
 ```bash
 OWNER=FreedomAutonomyReciprocitySoverignty
-REPO=fano-garden
+REPO=matroid-garden
 BRANCH=main
 
 gh api \

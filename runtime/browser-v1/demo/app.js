@@ -56,7 +56,7 @@ async function main() {
   });
 
   // Use an existing repo artifact as seed geometry.
-  const svgText = await loadText("../../../dev-docs/artifacts/fano-garden.svg");
+  const svgText = await loadText("../../../dev-docs/artifacts/matroid-garden.svg");
   await runtime.initFromSvg(svgText, {
     deriver: ethersPublicDeriver(window.ethers, phrase),
   });

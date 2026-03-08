@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1600" id="fano-garden-seed-kernel">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1600" id="matroid-garden-seed-kernel">
   <defs>
     <style>
       @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500&amp;family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&amp;display=swap');
@@ -573,7 +573,7 @@
       <line x1="0" y1="155" x2="200" y2="155" stroke="#3a3530"/>
       
       <text x="0" y="175" class="label" fill="#c9b99a">SEED KERNEL ID:</text>
-      <text x="0" y="190" class="note" font-family="monospace">FANO-GARDEN-2026-01</text>
+      <text x="0" y="190" class="note" font-family="monospace">MATROID-GARDEN-2026-01</text>
       <text x="0" y="205" class="note">This SVG is the seed.</text>
     </g>
   </g>

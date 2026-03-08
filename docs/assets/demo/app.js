@@ -56,7 +56,7 @@ async function main() {
   });
 
   // Use published docs asset so this works on GitHub Pages.
-  const svgText = await loadText("../data/fano-garden.svg");
+  const svgText = await loadText("../data/matroid-garden.svg");
   await runtime.initFromSvg(svgText, {
     deriver: ethersPublicDeriver(window.ethers, phrase),
   });

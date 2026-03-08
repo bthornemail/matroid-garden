@@ -1,15 +1,15 @@
-# fano-garden
+# matroid-garden
 
-fano-garden is a browser-first runtime framework for deterministic Fano-plane execution with append-only NDJSON commits, hash-link integrity, and projection into SVG/3D views.
+matroid-garden is a browser-first runtime framework for deterministic Fano-plane execution with append-only NDJSON commits, hash-link integrity, and projection into SVG/3D views.
 
 ## Consumer Site
 
 GitHub Pages site (after deployment):
 
-- `https://freedomautonomyreciprocitysoverignty.github.io/fano-garden/`
-- Quickstart: `https://freedomautonomyreciprocitysoverignty.github.io/fano-garden/quickstart/`
-- Live demo: `https://freedomautonomyreciprocitysoverignty.github.io/fano-garden/demo/`
-- Reference docs: `https://freedomautonomyreciprocitysoverignty.github.io/fano-garden/reference/`
+- `https://freedomautonomyreciprocitysoverignty.github.io/matroid-garden/`
+- Quickstart: `https://freedomautonomyreciprocitysoverignty.github.io/matroid-garden/quickstart/`
+- Live demo: `https://freedomautonomyreciprocitysoverignty.github.io/matroid-garden/demo/`
+- Reference docs: `https://freedomautonomyreciprocitysoverignty.github.io/matroid-garden/reference/`
 
 ## Local Preview of docs/
 
@@ -53,7 +53,7 @@ Open:
 
 Bundle loading examples:
 
-- `http://localhost:8080/?base=/bundles/fano-garden/`
+- `http://localhost:8080/?base=/bundles/matroid-garden/`
 
 Stop:
 

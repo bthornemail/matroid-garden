@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1600" id="fano-garden-seed-kernel">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1600" id="matroid-garden-seed-kernel">
   <defs>
     <style>
       @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500&amp;family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&amp;display=swap');
@@ -573,7 +573,7 @@
       <line x1="0" y1="155" x2="200" y2="155" stroke="#3a3530"/>
       
       <text x="0" y="175" class="label" fill="#c9b99a">SEED KERNEL ID:</text>
-      <text x="0" y="190" class="note" font-family="monospace">FANO-GARDEN-2026-01</text>
+      <text x="0" y="190" class="note" font-family="monospace">MATROID-GARDEN-2026-01</text>
       <text x="0" y="205" class="note">This SVG is the seed.</text>
     </g>
   </g>
@@ -665,7 +665,7 @@
     <text x="0" y="47" text-anchor="middle" class="note">Created 2026. The geometry is the grammar. The differential is the world.</text>
   </g>
 
-<metadata id="mvk-dashboard-meta">{&quot;config&quot;:{&quot;max_markers&quot;:2000},&quot;generated_at&quot;:&quot;1970-01-01T00:00:00Z&quot;,&quot;inputs&quot;:{&quot;bundle_verify&quot;:null,&quot;floorplan_svg&quot;:{&quot;copied_from&quot;:&quot;fano-garden-seed-kernel.svg&quot;,&quot;path&quot;:&quot;world.floorplan.svg&quot;,&quot;sha256&quot;:&quot;sha256:899758dadee755386aa2bedd0291bd3fa9c8c18d8c234dc2f621acf13205448c&quot;},&quot;narrative_scene&quot;:{&quot;path&quot;:&quot;narrative.scene.patch.json&quot;,&quot;sha256&quot;:&quot;sha256:cb257707e242e776526df3aecd9fa27bfd8eeebb89b3d1b9beff6b4236b012ed&quot;},&quot;narrative_verify&quot;:{&quot;path&quot;:&quot;narrative.verify.json&quot;,&quot;sha256&quot;:&quot;sha256:f1f9444620ad11b02af43cf04b7f45fc9c28314a45f4ec92f2d248b69acb896c&quot;}},&quot;kind&quot;:&quot;world.dashboard&quot;,&quot;lane_id&quot;:&quot;dashboard&quot;,&quot;run_id&quot;:&quot;sha256:393c71efd363e4ee2eba3823fb3ab1dd88e86ad1c229c38b4e14c1cc54bee28c&quot;,&quot;schema_version&quot;:1}</metadata>
+<metadata id="mvk-dashboard-meta">{&quot;config&quot;:{&quot;max_markers&quot;:2000},&quot;generated_at&quot;:&quot;1970-01-01T00:00:00Z&quot;,&quot;inputs&quot;:{&quot;bundle_verify&quot;:null,&quot;floorplan_svg&quot;:{&quot;copied_from&quot;:&quot;matroid-garden-seed-kernel.svg&quot;,&quot;path&quot;:&quot;world.floorplan.svg&quot;,&quot;sha256&quot;:&quot;sha256:899758dadee755386aa2bedd0291bd3fa9c8c18d8c234dc2f621acf13205448c&quot;},&quot;narrative_scene&quot;:{&quot;path&quot;:&quot;narrative.scene.patch.json&quot;,&quot;sha256&quot;:&quot;sha256:cb257707e242e776526df3aecd9fa27bfd8eeebb89b3d1b9beff6b4236b012ed&quot;},&quot;narrative_verify&quot;:{&quot;path&quot;:&quot;narrative.verify.json&quot;,&quot;sha256&quot;:&quot;sha256:f1f9444620ad11b02af43cf04b7f45fc9c28314a45f4ec92f2d248b69acb896c&quot;}},&quot;kind&quot;:&quot;world.dashboard&quot;,&quot;lane_id&quot;:&quot;dashboard&quot;,&quot;run_id&quot;:&quot;sha256:393c71efd363e4ee2eba3823fb3ab1dd88e86ad1c229c38b4e14c1cc54bee28c&quot;,&quot;schema_version&quot;:1}</metadata>
 <g id="mvk-dashboard-overlay" data-run-id="sha256:393c71efd363e4ee2eba3823fb3ab1dd88e86ad1c229c38b4e14c1cc54bee28c">
 <g id="proof" data-kind="proof"><rect x="12.00000000" y="12.00000000" width="260" height="54.00000000" rx="10" ry="10" fill="rgba(17,24,39,0.78)" stroke="rgba(148,163,184,0.35)" /><text x="24.00000000" y="34.00000000" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" fill="#e5e7eb">world.dashboard</text><text x="24.00000000" y="52.00000000" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" fill="#cbd5e1">narrative.verify: OK</text><text x="24.00000000" y="68.00000000" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="12" fill="#cbd5e1">markers: 235</text></g>
 <g id="narrative-markers" data-kind="narrative.markers">

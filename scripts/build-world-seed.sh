@@ -45,8 +45,8 @@ copy_if_exists "$ART_DIR/dome-leds.ndjson" "$OUT_DIR/hardware/dome-leds.ndjson"
 copy_if_exists "$ART_DIR/dome-leds.json" "$OUT_DIR/hardware/dome-leds.json"
 
 # Seed SVGs
-copy_if_exists "$ART_DIR/fano-garden.svg" "$OUT_DIR/bundle/fano-garden.svg"
-copy_if_exists "$ART_DIR/fano-garden-seed-kernel.svg" "$OUT_DIR/bundle/fano-garden-seed-kernel.svg"
+copy_if_exists "$ART_DIR/matroid-garden.svg" "$OUT_DIR/bundle/matroid-garden.svg"
+copy_if_exists "$ART_DIR/matroid-garden-seed-kernel.svg" "$OUT_DIR/bundle/matroid-garden-seed-kernel.svg"
 copy_if_exists "$ART_DIR/epistemic-square.svg" "$OUT_DIR/bundle/epistemic-square.svg"
 copy_if_exists "$ART_DIR/dome-svg.svg" "$OUT_DIR/bundle/dome-svg.svg"
 
@@ -57,7 +57,7 @@ copy_if_exists "$ART_DIR/world.mp4" "$OUT_DIR/world/world.mp4"
 CANON_SHA="$(hash_file "$OUT_DIR/canon/canon-manifest.ndjson")"
 UNIVERSE_SHA="$(hash_file "$OUT_DIR/canon/canon-universe-manifest.json")"
 LEDS_SHA="$(hash_file "$OUT_DIR/hardware/dome-leds.ndjson")"
-FANO_SHA="$(hash_file "$OUT_DIR/bundle/fano-garden.svg")"
+FANO_SHA="$(hash_file "$OUT_DIR/bundle/matroid-garden.svg")"
 
 cat > "$OUT_DIR/bundle/core.bundle.json" <<JSON
 {
@@ -69,7 +69,7 @@ cat > "$OUT_DIR/bundle/core.bundle.json" <<JSON
     "canon_universe_manifest": "/v1/canon/canon-universe-manifest.json",
     "replay_ui": "/v1/replay/index.html",
     "hardware_map": "/v1/hardware/dome-leds.ndjson",
-    "seed_svg": "/v1/bundle/fano-garden.svg",
+    "seed_svg": "/v1/bundle/matroid-garden.svg",
     "world_glb": "/v1/world/world.glb",
     "world_mp4": "/v1/world/world.mp4"
   },

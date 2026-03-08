@@ -11,5 +11,5 @@
 {"event":"metadata","key":"fano-points","value":{"1":"Metatron-Observer","2":"Solomon-Wisdom","3":"Solon-Law","4":"Asabiyyah-Cohesion","5":"Genesis-Gate","6":"Enoch-Walker","7":"Speaker-Voice"}}
 {"event":"metadata","key":"fano-lines","value":[{"line":1,"points":[1,2,4],"sound":"A-B-D","light":"R-O-G"},{"line":2,"points":[1,3,5],"sound":"A-C-E","light":"R-Y-B"},{"line":3,"points":[1,6,7],"sound":"A-F-G","light":"R-I-V"},{"line":4,"points":[2,3,6],"sound":"B-C-F","light":"O-Y-I"},{"line":5,"points":[2,5,7],"sound":"B-E-G","light":"O-B-V"},{"line":6,"points":[3,4,6],"sound":"C-D-G","light":"Y-G-I"},{"line":7,"points":[4,5,6],"sound":"D-E-F","light":"G-B-I"}]}
 {"event":"metadata","key":"protocol","value":"Share the line. Keep the differential. The 8th belongs to the session."}
-{"event":"metadata","key":"seed-kernel","value":"fano-garden-seed-kernel.svg"}
+{"event":"metadata","key":"seed-kernel","value":"matroid-garden-seed-kernel.svg"}
 {"event":"canon_loaded","total_series":9,"t":1739707001000}

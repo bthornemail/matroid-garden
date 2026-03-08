@@ -3118,7 +3118,7 @@ Do you want me to do that next?
 So would we be able to make this following svg with these fano plane svg compositions using something like a blockchain of ndjson
 
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1600" id="fano-garden-seed-kernel">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1600" id="matroid-garden-seed-kernel">
   <defs>
     <style>
       @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500&amp;family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&amp;display=swap');
@@ -3692,7 +3692,7 @@ So would we be able to make this following svg with these fano plane svg composi
       <line x1="0" y1="155" x2="200" y2="155" stroke="#3a3530"/>
       
       <text x="0" y="175" class="label" fill="#c9b99a">SEED KERNEL ID:</text>
-      <text x="0" y="190" class="note" font-family="monospace">FANO-GARDEN-2026-01</text>
+      <text x="0" y="190" class="note" font-family="monospace">MATROID-GARDEN-2026-01</text>
       <text x="0" y="205" class="note">This SVG is the seed.</text>
     </g>
   </g>
@@ -3815,7 +3815,7 @@ Yes — conceptually, what you’re describing is feasible. You can treat each F
 ```json
 {
   "timestamp": "2026-02-19T12:00:00Z",
-  "svg_id": "fano-garden-seed-kernel",
+  "svg_id": "matroid-garden-seed-kernel",
   "operation": "add_line",
   "line": {"points": [2,5,7], "sound": ["B","E","G"], "light": ["O","B","V"]},
   "session": "session-1234",
@@ -3876,7 +3876,7 @@ Each NDJSON line represents a single **atomic update or composition**:
 ```json
 {
   "timestamp": "2026-02-19T12:00:00Z",   // ISO 8601 timestamp
-  "svg_id": "fano-garden-seed-kernel",  // canonical reference SVG
+  "svg_id": "matroid-garden-seed-kernel",  // canonical reference SVG
   "operation": "add_plane|update_line|highlight_point", // type of event
   "plane_id": "fano-001",               // unique plane instance
   "points": [
@@ -3929,7 +3929,7 @@ document.body.appendChild(renderer.domElement);
 const loader = new SVGLoader();
 let fanoPlanes = {};
 
-loader.load('fano-garden-seed-kernel.svg', data => {
+loader.load('matroid-garden-seed-kernel.svg', data => {
   const paths = data.paths;
   const group = new THREE.Group();
   
@@ -3944,7 +3944,7 @@ loader.load('fano-garden-seed-kernel.svg', data => {
   });
   
   scene.add(group);
-  fanoPlanes["fano-garden-seed-kernel"] = group;
+  fanoPlanes["matroid-garden-seed-kernel"] = group;
 });
 
 // ------------------------------
@@ -3985,7 +3985,7 @@ function applyEvent(event) {
 const ndjsonEvents = [
   {
     "timestamp": "2026-02-19T12:00:00Z",
-    "svg_id": "fano-garden-seed-kernel",
+    "svg_id": "matroid-garden-seed-kernel",
     "operation": "add_plane",
     "plane_id": "fano-001",
     "points": [
@@ -5395,7 +5395,7 @@ Do you want me to do that next?
 
 ## You
 
-Yes i wanted like the fano plane seed kernel svg to be like a sharable seed like how people use qrcodes.  But i want the svg to be embeddable and configurable to a proxy or port so that people can just use the svg to understand and access and extend a world, but if the fano plane kernel seed svg can just describe how its built from the fano plan svg using the fano-garden.svg with the  epistemic-square.svg then we can use a ndjson of this following dome.svg to describe whole worlds in ndjson
+Yes i wanted like the fano plane seed kernel svg to be like a sharable seed like how people use qrcodes.  But i want the svg to be embeddable and configurable to a proxy or port so that people can just use the svg to understand and access and extend a world, but if the fano plane kernel seed svg can just describe how its built from the fano plan svg using the matroid-garden.svg with the  epistemic-square.svg then we can use a ndjson of this following dome.svg to describe whole worlds in ndjson
 
 ```svg
 <?xml version="1.0" encoding="UTF-8"?>
@@ -5639,7 +5639,7 @@ Here’s how we can **formalize this approach and extend it** so the SVG becomes
 
 ## **2. Embeddable & Configurable Proxy / Port**
 
-- **Embed** anywhere: `<iframe src="fano-garden.svg">` or inline `<svg>` in HTML.
+- **Embed** anywhere: `<iframe src="matroid-garden.svg">` or inline `<svg>` in HTML.
 - **Proxy/Port**:
   - Events from the SVG (`domeElementClick`) can go to:
     - Local agent (`ministral-3:3b`) for reasoning.
@@ -5648,7 +5648,7 @@ Here’s how we can **formalize this approach and extend it** so the SVG becomes
 
 ---
 
-## **3. Fano-Garden + Epistemic-Square Layering**
+## **3. Matroid-Garden + Epistemic-Square Layering**
 
 - The “garden” is a **meta-layout of multiple Fano planes**:
   - Each pole group → a Fano-plane instance.
@@ -5742,8 +5742,8 @@ Do you want me to do that next?
 Would i be able to package these svg with a ndjson manifest and a runtime and be able to share universally like how json canvas spec https://jsoncanvas.org/spec/1.0/ works to make this a rpc:  
   
 FanoPlane_700.svg                               
-fano-garden-seed-kernel.svg    
-fano-garden.svg  
+matroid-garden-seed-kernel.svg    
+matroid-garden.svg  
 dome-svg.svg                                  fano-with-light-arrays.svg  
 epistemic-square.svg  
   
@@ -6010,7 +6010,7 @@ epistemic-square.svg
 
 ## ChatGPT
 
-Yes — what you’re describing is fully feasible. You can package your SVG assets like `FanoPlane_700.svg`, `fano-garden-seed-kernel.svg`, `dome-svg.svg`, `epistemic-square.svg`, etc., along with a **NDJSON manifest** that describes all the elements, arrays, and interactions. Then, with a small **runtime loader**, this bundle can behave like a universal RPC canvas similar to `jsoncanvas.org`. Essentially, your NDJSON acts as the “semantic manifest” that decouples rendering from behavior. Here’s how it could work:
+Yes — what you’re describing is fully feasible. You can package your SVG assets like `FanoPlane_700.svg`, `matroid-garden-seed-kernel.svg`, `dome-svg.svg`, `epistemic-square.svg`, etc., along with a **NDJSON manifest** that describes all the elements, arrays, and interactions. Then, with a small **runtime loader**, this bundle can behave like a universal RPC canvas similar to `jsoncanvas.org`. Essentially, your NDJSON acts as the “semantic manifest” that decouples rendering from behavior. Here’s how it could work:
 
 ---
 
@@ -6020,7 +6020,7 @@ Each line in the NDJSON would describe an asset or interactive element:
 
 ```json
 {"id": "fano-plane", "type": "svg", "src": "FanoPlane_700.svg", "path": "m/7'", "arrays": ["talisman"]}
-{"id": "fano-garden", "type": "svg", "src": "fano-garden.svg", "path": "m/240'", "arrays": ["garden"]}
+{"id": "matroid-garden", "type": "svg", "src": "matroid-garden.svg", "path": "m/240'", "arrays": ["garden"]}
 {"id": "dome", "type": "svg", "src": "dome-svg.svg", "path": "m/240'/0'/0'", "arrays": ["personal"]}
 {"id": "epistemic-square", "type": "svg", "src": "epistemic-square.svg"}
 {"id": "runtime", "type": "js", "src": "dome-runtime.js"}
@@ -6744,7 +6744,7 @@ Do you want me to do that next?
 
 ## You
 
-Yes that will be perfect for when i model the fano-garden.svg as an actually physical toolkit with 6 optical/harmonic arrays and a 360° lidar/radar core
+Yes that will be perfect for when i model the matroid-garden.svg as an actually physical toolkit with 6 optical/harmonic arrays and a 360° lidar/radar core
 
 ---
 
@@ -6978,7 +6978,7 @@ Here’s a **preview of the structure and first portion** (we’ll extend to 600
 ## Table of Contents
 1. [Introduction](#introduction)
 2. [Core Architectural Agents](#core-architectural-agents)
-3. [Fano Garden Agents](#fano-garden-agents)
+3. [Fano Garden Agents](#matroid-garden-agents)
 4. [Merkabah Agents](#merkabah-agents)
 5. [NDJSON / HDNode Agents](#ndjson--hdnode-agents)
 6. [Optical/Harmonic Array Agents](#opticalharmonic-array-agents)
@@ -7482,12 +7482,12 @@ All sections are **deterministic and cryptographically verifiable**.
 ** Assets
 - SVGs:
   - FanoPlane_700.svg
-  - fano-garden-seed-kernel.svg
-  - fano-garden.svg
+  - matroid-garden-seed-kernel.svg
+  - matroid-garden.svg
   - dome-svg.svg
   - fano-with-light-arrays.svg
   - epistemic-square.svg
-- NDJSON manifest: fano-garden.ndjson
+- NDJSON manifest: matroid-garden.ndjson
 - 3D / tetrahedral mappings: *.glb / *.obj placeholders
 - LLM inputs: WordNet/Bible/Axioms/Blob
 
@@ -7500,8 +7500,8 @@ All sections are **deterministic and cryptographically verifiable**.
 #+BEGIN_SRC json
 [
   {"type":"svg","path":"FanoPlane_700.svg","hash":"<hash>"},
-  {"type":"svg","path":"fano-garden-seed-kernel.svg","hash":"<hash>"},
-  {"type":"svg","path":"fano-garden.svg","hash":"<hash>"},
+  {"type":"svg","path":"matroid-garden-seed-kernel.svg","hash":"<hash>"},
+  {"type":"svg","path":"matroid-garden.svg","hash":"<hash>"},
   {"type":"svg","path":"dome-svg.svg","hash":"<hash>"},
   {"type":"svg","path":"fano-with-light-arrays.svg","hash":"<hash>"},
   {"type":"svg","path":"epistemic-square.svg","hash":"<hash>"}
@@ -7667,12 +7667,12 @@ All sections are **deterministic and cryptographically verifiable**.
 ** Assets
 - SVGs:
   - FanoPlane_700.svg
-  - fano-garden-seed-kernel.svg
-  - fano-garden.svg
+  - matroid-garden-seed-kernel.svg
+  - matroid-garden.svg
   - dome-svg.svg
   - fano-with-light-arrays.svg
   - epistemic-square.svg
-- NDJSON manifest: fano-garden.ndjson
+- NDJSON manifest: matroid-garden.ndjson
 - 3D / tetrahedral mappings: *.glb / *.obj placeholders
 - LLM inputs: WordNet/Bible/Axioms/Blob
 
@@ -7686,8 +7686,8 @@ All sections are **deterministic and cryptographically verifiable**.
 #+BEGIN_SRC json
 [
   {"type":"svg","path":"FanoPlane_700.svg","hash":"<hash>"},
-  {"type":"svg","path":"fano-garden-seed-kernel.svg","hash":"<hash>"},
-  {"type":"svg","path":"fano-garden.svg","hash":"<hash>"},
+  {"type":"svg","path":"matroid-garden-seed-kernel.svg","hash":"<hash>"},
+  {"type":"svg","path":"matroid-garden.svg","hash":"<hash>"},
   {"type":"svg","path":"dome-svg.svg","hash":"<hash>"},
   {"type":"svg","path":"fano-with-light-arrays.svg","hash":"<hash>"},
   {"type":"svg","path":"epistemic-square.svg","hash":"<hash>"}
@@ -7868,7 +7868,7 @@ function freezeWO(wo) {
 * NOTES
 - Every SVG point & LED → NDJSON node
 - RPC left/right mapping mirrors code/data interfaces
-- Fano-garden.svg + 3D tetrahedron = procedural toolkit
+- Matroid-Garden.svg + 3D tetrahedron = procedural toolkit
 - Metatron / Genesis / Solon-Solomon-Asabiyyah = foundational narrative nodes
 
 ```
@@ -7912,12 +7912,12 @@ Here’s the fully expanded NDJSON skeleton:
   },
   {
     "type": "svg",
-    "path": "fano-garden-seed-kernel.svg",
+    "path": "matroid-garden-seed-kernel.svg",
     "hash": "<hash>"
   },
   {
     "type": "svg",
-    "path": "fano-garden.svg",
+    "path": "matroid-garden.svg",
     "hash": "<hash>"
   },
   {
@@ -8255,7 +8255,7 @@ console.log(`NDJSON exported: ${ndjsonFile}`);
 ### **3. Notes / Enhancements**
 - You can **filter by array** using `data-array` or `data-ring` attributes.
 - Can also **calculate derived properties** like distances, triangle points, or Merkle hash paths.
-- Works for **dome.svg**, **fano-garden.svg**, or any of your other SVGs — just swap the file and adjust the selectors if needed.
+- Works for **dome.svg**, **matroid-garden.svg**, or any of your other SVGs — just swap the file and adjust the selectors if needed.
 - Once exported, this NDJSON is **ready for your RO/WO Merkle structure, RPC, and LLM introspection**.
 
 ---
@@ -8279,7 +8279,7 @@ Yes please
 
 ## ChatGPT
 
-Perfect. Let’s lay out a **full exporter** that converts your SVG Fano Plane + light arrays into an NDJSON manifest with all your named points, triangles, rings, and centroidal structure ready for federated metaverse use. This builds directly from your `dome.svg` or `fano-garden.svg`.  
+Perfect. Let’s lay out a **full exporter** that converts your SVG Fano Plane + light arrays into an NDJSON manifest with all your named points, triangles, rings, and centroidal structure ready for federated metaverse use. This builds directly from your `dome.svg` or `matroid-garden.svg`.  
 
 Here’s a **Node.js script** that fully encodes the structure you described:
 
@@ -8290,8 +8290,8 @@ import fs from 'fs';
 import { JSDOM } from 'jsdom';
 
 // --- CONFIG ---
-const svgFile = 'fano-garden.svg';  // or dome.svg
-const outputNDJSON = 'fano-garden.ndjson';
+const svgFile = 'matroid-garden.svg';  // or dome.svg
+const outputNDJSON = 'matroid-garden.ndjson';
 
 // --- LOAD SVG ---
 const svgText = fs.readFileSync(svgFile, 'utf-8');
@@ -8501,7 +8501,7 @@ Ah, perfect — that clarifies exactly how your **full cognitive–semantic infr
 ```markdown
 ---
 timestamp: 2026-02-19T20:15:00Z
-bundle: fano-garden-v1
+bundle: matroid-garden-v1
 version: 1.0
 ---
 {"event":"click","node":"Metatron","mnemonic_path":"Exodus 25:22","result":"highlight"}
@@ -8568,8 +8568,8 @@ import json
 import hashlib
 from datetime import datetime
 
-SVG_FILE = "fano-garden.svg"
-NDJSON_OUT = "fano-garden-bundle.ndjson"
+SVG_FILE = "matroid-garden.svg"
+NDJSON_OUT = "matroid-garden-bundle.ndjson"
 
 def merkle_hash(data: str) -> str:
     """Generate SHA256 hash of a JSON string."""
@@ -8627,7 +8627,7 @@ def write_ndjson(nodes, out_file):
 ")
         f.write(f"timestamp: {timestamp}
 ")
-        f.write("bundle: fano-garden-v1
+        f.write("bundle: matroid-garden-v1
 ")
         f.write("version: 1.0
 ")
@@ -8654,7 +8654,7 @@ if __name__ == "__main__":
 
 ### **How it works**
 
-1. Parses your `fano-garden.svg` and extracts:
+1. Parses your `matroid-garden.svg` and extracts:
    - **Fano points** (Metatron, Solomon, etc.)
    - **LED dots** (7-bit, 61-bit, 241-bit rings)
 2. Attaches **mnemonic paths** using your metadata (`data-name`, `data-path`) for WordNet/Bible references.
@@ -8751,10 +8751,10 @@ Here’s a **complete executive summary** of your project, capturing everything 
 
 ---
 
-# **Executive Summary: Fano-Garden Federated Runtime**
+# **Executive Summary: Matroid-Garden Federated Runtime**
 
 ### **Project Vision**
-The Fano-Garden system is a **federated, interactive, semantic runtime** that encodes **mathematical, spiritual, and computational structures** into a **distributed graph of nodes**, represented via SVG, NDJSON, and procedural metadata. It provides a universal runtime for **user interaction, LLM introspection, and SCGNN-style computation** with a fully traceable and convergent architecture.
+The Matroid-Garden system is a **federated, interactive, semantic runtime** that encodes **mathematical, spiritual, and computational structures** into a **distributed graph of nodes**, represented via SVG, NDJSON, and procedural metadata. It provides a universal runtime for **user interaction, LLM introspection, and SCGNN-style computation** with a fully traceable and convergent architecture.
 
 ---
 
@@ -8802,7 +8802,7 @@ The Fano-Garden system is a **federated, interactive, semantic runtime** that en
 
 6. **Physical / 3D Integration**
    - NDJSON nodes map to **physical optical/harmonic arrays** and **360° LiDAR/radar cores**.
-   - The Fano-garden + LED rings can be **modeled as physical devices** or **VR/AR interactive layers**.
+   - The Matroid-Garden + LED rings can be **modeled as physical devices** or **VR/AR interactive layers**.
    - This preserves **runtime state and interactivity** across both **digital and physical domains**.
 
 7. **Merkaba / Stellated Structure**
@@ -8876,11 +8876,11 @@ The Fano-Garden system is a **federated, interactive, semantic runtime** that en
 ---
 
 💡 **Conclusion:**  
-The Fano-Garden system transforms SVG-based visual metaphors into a **fully federated, interactive runtime**, where **each node acts as a canvas VM, RPC port, and SCGNN actor**, all serialized via NDJSON for deterministic replay, federated convergence, and physical/digital mirroring. The structure naturally supports **user I/O, LLM reasoning, and distributed symbolic computation**.
+The Matroid-Garden system transforms SVG-based visual metaphors into a **fully federated, interactive runtime**, where **each node acts as a canvas VM, RPC port, and SCGNN actor**, all serialized via NDJSON for deterministic replay, federated convergence, and physical/digital mirroring. The structure naturally supports **user I/O, LLM reasoning, and distributed symbolic computation**.
 
 ---
 
-If you want, I can also **produce a single-page visual diagram** of **the full Fano-garden runtime SCGNN + RPC architecture**, ready to include in your article or technical design.  
+If you want, I can also **produce a single-page visual diagram** of **the full Matroid-Garden runtime SCGNN + RPC architecture**, ready to include in your article or technical design.  
 
 Do you want me to make that diagram next?
 
@@ -8895,7 +8895,7 @@ Yes please
 ## ChatGPT
 
 {
-  "prompt": "Create a single-page visual diagram of the Fano-Garden federated runtime architecture. Include: SVG canvas nodes, Fano-plane points with LED rings, nodes as micro-VMs, edges representing code/data flow (top/bottom) and ports as files (left/right), NDJSON Merkle trie manifest, RPC communication, SCGNN-style message passing, user/LLM inputs, and optional physical layer with optical/harmonic arrays. Use a clean, tech infographic style with labels and arrows showing interactions, convergence, and replay paths.",
+  "prompt": "Create a single-page visual diagram of the Matroid-Garden federated runtime architecture. Include: SVG canvas nodes, Fano-plane points with LED rings, nodes as micro-VMs, edges representing code/data flow (top/bottom) and ports as files (left/right), NDJSON Merkle trie manifest, RPC communication, SCGNN-style message passing, user/LLM inputs, and optional physical layer with optical/harmonic arrays. Use a clean, tech infographic style with labels and arrows showing interactions, convergence, and replay paths.",
   "size": "1024x1024"
 }
 ![Image](images/file_00000000290071f7936bda5ccb4e9cba.png)
@@ -8912,7 +8912,7 @@ I like the picture can you make one just for the interactive nodes
 ## ChatGPT
 
 {
-  "prompt": "Create a single-page visual diagram focused on the interactive nodes of the Fano-Garden runtime. Highlight nodes as micro-VMs or canvas runtimes, with Fano-plane points and LED rings. Show top/bottom edges as code/data flow, left/right ports as files. Include NDJSON manifests and RPC communication. Emphasize user input, LLM introspection, and SCGNN-style message passing. Use a clean, futuristic tech infographic style with clear labels, arrows, and interactivity emphasis.",
+  "prompt": "Create a single-page visual diagram focused on the interactive nodes of the Matroid-Garden runtime. Highlight nodes as micro-VMs or canvas runtimes, with Fano-plane points and LED rings. Show top/bottom edges as code/data flow, left/right ports as files. Include NDJSON manifests and RPC communication. Emphasize user input, LLM introspection, and SCGNN-style message passing. Use a clean, futuristic tech infographic style with clear labels, arrows, and interactivity emphasis.",
   "size": "1024x1024"
 }
 ![Image](images/file_00000000e0f871f7ba514597b59dc04c.png)
@@ -8929,7 +8929,7 @@ Excuse me i meant interactive nodes with semantic edges describing a complete un
 ## ChatGPT
 
 {
-  "prompt": "Create a detailed diagram of interactive nodes based on the Fano-Garden runtime. Each node represents a complete semantic unit, like a Fano-plane SVG, with points, LED rings, and labeled edges. Include top/bottom edges as code/data flow, left/right as file ports, NDJSON manifest metadata, and RPC/SCGNN-style communication. Emphasize interactivity and semantic relationships, showing user/LLM inputs and outputs. Use a modern, clean, technical infographic style with clear labels, distinct node shapes, and highlighted edges.",
+  "prompt": "Create a detailed diagram of interactive nodes based on the Matroid-Garden runtime. Each node represents a complete semantic unit, like a Fano-plane SVG, with points, LED rings, and labeled edges. Include top/bottom edges as code/data flow, left/right as file ports, NDJSON manifest metadata, and RPC/SCGNN-style communication. Emphasize interactivity and semantic relationships, showing user/LLM inputs and outputs. Use a modern, clean, technical infographic style with clear labels, distinct node shapes, and highlighted edges.",
   "size": "1024x1024"
 }
 ![Image](images/file_000000002b5c71f5be1f959c3062f047.png)
@@ -10843,7 +10843,7 @@ It is effectively a **live semantic circuit**.
 Write a desktop script that converts SVG → schema text:
 
 ```bash
-python svg2garden.py fano-garden.svg > garden.schema
+python svg2garden.py matroid-garden.svg > garden.schema
 ```
 
 Flash once with embedded `garden.schema`.
@@ -12978,7 +12978,7 @@ Here’s the template:
 </head>
 <body>
 
-<svg id="fano-garden" viewBox="0 0 800 800">
+<svg id="matroid-garden" viewBox="0 0 800 800">
   <rect width="800" height="800" fill="#0a0a0a"/>
   
   <!-- Garden Center -->
@@ -13193,7 +13193,7 @@ bitLayers.forEach((layer, lIdx) => {
     svgGroup.appendChild(led);
   }
   
-  document.getElementById('fano-garden').appendChild(svgGroup);
+  document.getElementById('matroid-garden').appendChild(svgGroup);
 });
 ```
 
@@ -13286,7 +13286,7 @@ This version integrates:
 ---
 
 ```xml
-<svg width="1000" height="1000" xmlns="http://www.w3.org/2000/svg" id="fano-garden">
+<svg width="1000" height="1000" xmlns="http://www.w3.org/2000/svg" id="matroid-garden">
   <rect width="1000" height="1000" fill="#0a0a0a"/>
   
   <!-- Layer container -->

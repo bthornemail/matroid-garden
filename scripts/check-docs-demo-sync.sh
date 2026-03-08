@@ -41,8 +41,8 @@ if [[ ! -f "$DST/app.js" ]]; then
   status=1
 fi
 
-if [[ ! -f "$ROOT/docs/assets/data/fano-garden.svg" ]]; then
-  echo "MISSING: docs/assets/data/fano-garden.svg"
+if [[ ! -f "$ROOT/docs/assets/data/matroid-garden.svg" ]]; then
+  echo "MISSING: docs/assets/data/matroid-garden.svg"
   status=1
 fi
 
